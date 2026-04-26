@@ -1,11 +1,11 @@
-import React from 'react';
+// import React from 'react';
 
-const page = () => {
-    return (
-        <div>
-<            <StudentResult></StudentResult>></StudentResult>
-            </div>
-    );
-};
+// const page = () => {
+//     return (
+//         <div>
+//             {/* <StudentResult></StudentResult> */}
+//         </div>
+//     );
+// };
 
-export default page;
+// export default page;
