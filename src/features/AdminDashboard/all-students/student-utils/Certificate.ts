@@ -15,6 +15,12 @@ export async function Certificate(student: {
   dob?: string;
   publishDate?: string;
   issueDate?: string;
+  month1?: string;  // ✅ add
+  year1?: string;   // ✅ add
+  month2?: string;  // ✅ add
+  year2?: string;   // ✅ add
+  gender?: string;  // ✅ add (এটাও pass হচ্ছে)
+  educationQualification?: string; // ✅ add
 }) {
   const { default: jsPDF } = await import("jspdf");
 
@@ -42,7 +48,7 @@ export async function Certificate(student: {
     ctx.drawImage(templateImg, 0, 0);
     const templateDataUrl = canvas.toDataURL("image/jpeg", 1.0);
     pdf.addImage(templateDataUrl, "JPEG", 0, 0, 1123, 794);
-  } catch {}
+  } catch { }
 
   const centerX = 1123 / 2;
   pdf.setTextColor(30, 30, 30);
@@ -58,11 +64,11 @@ export async function Certificate(student: {
   pdf.text(student.session ?? "", 750, 335);
 
   pdf.text(student.name ?? "", 290, 392);
-  
+
   pdf.text(student.fatherName ?? "", 250, 440);
-  
+
   pdf.text(student.motherName ?? "", 160, 490);
-  
+
   pdf.text(student.institute ?? "", 150, 540);
 
   pdf.text(student.roll ?? "", 240, 592);
@@ -78,7 +84,7 @@ export async function Certificate(student: {
   pdf.setFont("times", "normal");
   pdf.setFontSize(11);
   pdf.text(`ID: ${student.studentId ?? ""}`, 100, 320);
-  
+
   const dobFormatted = student.dob ? new Date(student.dob).toLocaleDateString() : "";
   pdf.text(`DOB: ${dobFormatted}`, 100, 340);
 
